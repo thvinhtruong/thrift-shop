@@ -1,0 +1,31 @@
+Requirement
+
+Description
+Platform - Marketplace to selling old clothes and old stuffs (fashion relate)
+
+There are 3 types of users 
+- Customer
+- Retailer
+- Admin
+
+Retailer can:
+- Register / Login
+- Post / See / Edit / Delete their products
+- Cancel user orders
+
+
+Customer can:
+- Register / Login
+- See products
+- Buy products
+- Cancel orders
+- See / Edit / Delete their profile
+
+Admin can
+- See / Edit / Delete customers
+- See / Edit / Delete products
+- See / Edit / Delete retailer
+
+
+Tech Stack: Mysql, Golang (or Node), ReactJS, TS
+Member: 3
