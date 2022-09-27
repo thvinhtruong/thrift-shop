@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     blocked: Boolean,
     cart: Array, of: {
         products: Product,
-        buy_later: Object,
+        buy_later: Product,
         price: Number,
     },
     }, {

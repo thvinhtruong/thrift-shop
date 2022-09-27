@@ -1,7 +1,6 @@
-const {exec} = require('child_process');
 const express = require('express');
 const DBConn = require('../src/api/v1/helper/connection')
-const {serverPort, serverHost, dbURI, dbPort} = require('../src/config/config')
+const {DBCfg, SSLCfg, ServerCfg, env} = require('../src/config/config')
 
 const app = express();
     
@@ -14,9 +13,10 @@ app.use((req, res, next) => {
 })
 
 const Run = () => {   
-    let db = DBConn(dbURI, dbPort).then(() => {
-        app.listen(serverPort, serverHost, () => {
-            console.log(`Server is running on port ${serverPort}`)
+    DBConn(DBCfg.dbURI, DBCfg.dbPort).then(() => {
+        app.listen(ServerCfg.serverPort, ServerCfg.serverHost, () => {
+            console.log(`Server is running on ${ServerCfg.serverHost}:${ServerCfg.serverPort}`)
+            console.log(`Node Environment: ${env}`)
         })
     }
     ).catch((err) => {

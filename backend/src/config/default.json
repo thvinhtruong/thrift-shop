@@ -1,0 +1,39 @@
+{
+    "dev": {
+        "server": {
+            "host": "localhost",
+            "port": 4000,
+            "ssl": false,
+            "ssl_key": "",
+            "ssl_cert": ""
+        },
+
+        "database": {
+            "name": "thrifshop-local",
+            "user": "",
+            "password": "",
+            "host": "localhost",
+            "port": 27017,
+            "mongodbURI": "mongodb://localhost:27017/thriftshop-local"
+        }
+    },
+    "prod": {
+        "server": {
+            "host": "localhost",
+            "port": 8080,
+            "ssl": true,
+            "ssl_key": "",
+            "ssl_CA": "",
+            "ssl_cert": ""
+        },
+
+        "database": {
+            "name": "thrifshop",
+            "user": "",
+            "password": "",
+            "host": "localhost",
+            "port": 27017,
+            "mongodbURI": "mongodb://localhost:27017/thriftshop-online"
+        }
+    }
+}
