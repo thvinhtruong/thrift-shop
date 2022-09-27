@@ -7,11 +7,12 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String,
     address: String,
-    cart: {
-        type: Array, of: {
-            productId: Number,
-        },
-        default: []
+    phone: String,
+    blocked: Boolean,
+    cart: Array, of: {
+        products: Product,
+        buy_later: Object,
+        price: Number,
     },
     }, {
         timestamps: true
@@ -20,18 +21,16 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.pre('save', async function(next) {
-    const user = this
-    const hash = await bcrypt.hash(this.password, 10)
-
+    const salt = bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(this.password, salt)
     this.password = hash
     next()
 })
-
+ 
 // hashing in bycrypt is CPU intensive
 // using async mode which ultilizes thread pool, so it will not block the main event loop
-userSchema.methods.isValidPassword = async function(password) {
-    const user = this
-    const compare = await bcrypt.compare(password, user.password)
+userSchema.methods.isCorrectPassword = async function(password) {
+    const compare = await bcrypt.compare(password, this.password)
 
     return compare
 }

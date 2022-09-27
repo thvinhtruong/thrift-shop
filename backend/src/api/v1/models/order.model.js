@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema({
         code: String,
         discount: Number
     },
-    total: Number,
+    totalPrice: Number,
     status: {
         type: String,
         default: 'active'
@@ -24,7 +24,7 @@ orderSchema.pre('save', function (next) {
     const code = this.discountCode
     if (code) {
         code.discount = code.discount / 100
-        this.total = this.total * code.discount
+        this.totalPrice = this.totalPrice * code.discount
     }
     next()
 })

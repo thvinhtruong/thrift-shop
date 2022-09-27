@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
     brand: String,
     quality: Number,
     price: Number,
-    specs: {
+    specs: Object, of: {
         k: String,
         v: String
     },

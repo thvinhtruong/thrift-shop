@@ -6,6 +6,12 @@ const retailerSchema = new mongoose.Schema({
     email: String,
     password: String,
     address: String,
+    blocked: Boolean,
+    validateDate: Date,
+    productList: Array, of: {
+        productId: Number,
+        quantity: Number,
+    }
 }, {
     timestamps: true
 })
